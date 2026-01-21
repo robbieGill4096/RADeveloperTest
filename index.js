@@ -25,7 +25,7 @@ import { deck, users } from './setup.js';
 //     ...
 //   }
 // }
-
+//ANSWER Rob Gill 1/21/2026
 function drawCards(deck, num){
   //for the number of cards drawn
   //if (num >=0){
@@ -42,37 +42,38 @@ function drawCards(deck, num){
   const remainingValues = new Object();
   //const remainingValues = []
   for (let i = 0; i < num; i++) {
+    const card = deck.pop()
 
-  hand.push(deck.pop());
+  hand.push({suit:card.suit,value:card.value});
   }
   //get the values of remianing suits and values
   const suitSet = new Set();
   const valSet = new Set();
-  for(let i=0; i < deck.length; i++){
+  for(let i = 0; i < deck.length; i++){
     if(suitSet.has(deck[i].suit)){
-
-      remainingSuits[deck[i].suit] +=1;
-    };
+      remainingSuits[deck[i].suit] += 1;
+      //remainingValues[deck[i].value] += 1;
+    } 
+    else {
+       remainingSuits[deck[i].suit] =1;
+       suitSet.add(deck[i].suit);}
+  
     if(valSet.has(deck[i].value)){
       remainingValues[deck[i].value] +=1;
-      console.log("add occurence of that value");
     }
     else{
-  
-    remainingSuits[deck[i].suit] =1;
-    remainingValues[deck[i].value] =1;
-
+      remainingValues[deck[i].value] =1;
+      valSet.add(deck[i].value);
     //console.log(deck[i].suit);
     //console.log(deck[i].value);
-    valSet.add(deck[i].value);
-    suitSet.add(deck[i].suit);}
+    }
   }
-  return {remainingSuits,remainingValues};
+  return {hand,remainingSuits,remainingValues};
   //return {hand,remainingSuits,remainingValues};
 
 }
 //drawCards(deck,4);
-console.log(drawCards(deck, 12));
+console.log(drawCards(deck, 1));
 
 
 // Given an array of users
@@ -99,7 +100,7 @@ console.log(drawCards(deck, 12));
 //   },
 //   dupeCount: 1
 // }
-
+//ANSWER Rob Gill 1/21/2026
 function deduplicateUsers(users){
   const map = new Map();
   const returnUsers = [];
@@ -161,3 +162,26 @@ function deduplicateUsers(users){
 //Given that you can control the object schema
 //And given that all user editable fields are limited to numbers and letters
 //NOTE: This question does not have a correct answer, it is a design question to see how you think about the problem
+
+//ANSWER Rob Gill 1/21/2026
+//assuming you are talking about event as in like a party or a Dr. Appointment
+//A user would want to be able to search by Date, Time, Day of the week, Name of the event, partial name of event
+//given that all fields are limited to numbers and letters you could combine fields together into a string
+//This apporach would be similar to how I did the second solution to the Deduplicate function. 
+//this time though you would want the search to be able to make partial matches, so your search function would look for
+//records that contain partial matches in the string.
+//search(event):
+//RECORD
+/*
+Record = {
+  Name: "Bills Birthday",
+  Date: "1/24/2026",
+  Time: "6:00PM",
+  DayWeek: calculateDay(Date)=>"Saturday",
+  Attendees: NAN  //solution has to work even when user dosen't fill out all the fields
+  KEY: JSON.stringify({Name,Date,Time,DayWeek,Attendees}) //this should also be delimited 
+  //"Name;Date;Time:dayWeek;Attendees";
+}
+*/
+
+
