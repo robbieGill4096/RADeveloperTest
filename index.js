@@ -37,21 +37,37 @@ function drawCards(deck, num){
   //deck.pop()
   const map = new Map();
   const hand = [];
-  const remainingSuits = []
-  const remainingValues = []
+  const remainingSuits = new Object();
+  //const remainingSuits = []
+  const remainingValues = new Object();
+  //const remainingValues = []
   for (let i = 0; i < num; i++) {
 
   hand.push(deck.pop());
   }
   //get the values of remianing suits and values
+  const suitSet = new Set();
+  const valSet = new Set();
   for(let i=0; i < deck.length; i++){
-    console.log(deck[i]
-    
+    if(suitSet.has(deck[i].suit)){
 
+      remainingSuits[deck[i].suit] +=1;
+    };
+    if(valSet.has(deck[i].value)){
+      remainingValues[deck[i].value] +=1;
+      console.log("add occurence of that value");
+    }
+    else{
+  
+    remainingSuits[deck[i].suit] =1;
+    remainingValues[deck[i].value] =1;
 
-    );
+    //console.log(deck[i].suit);
+    //console.log(deck[i].value);
+    valSet.add(deck[i].value);
+    suitSet.add(deck[i].suit);}
   }
-  return [deck[0], num];
+  return {remainingSuits,remainingValues};
   //return {hand,remainingSuits,remainingValues};
 
 }
