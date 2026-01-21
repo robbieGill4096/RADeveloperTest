@@ -30,7 +30,7 @@ function drawCards(deck, num){
   return [deck, num];
 }
 
-console.log(drawCards(deck, 5));
+//console.log(drawCards(deck, 5));
 
 
 // Given an array of users
@@ -59,9 +59,42 @@ console.log(drawCards(deck, 5));
 // }
 
 function deduplicateUsers(users){
-  return users;
-}
+  const map = new Map();
+  const returnUsers = [];
+  let totalDups =0;
+  for (const user of users){
+    //console.log(x)
+    const key = `${user.name} ${user.eyeColor} ${user.hairColor}`
+    
+    
+    if (!map.has(key)) {
+      returnUsers.push(user);
+      //var dup_count=0
+     //map.set(key,{ user: user, dupeCount: 0 }); // I misunderstood if you wanted to track duplicates for each instance
+     //or just total overall 
+    map.set(key,user);
+    }
+  else {
 
+    //remove the duplicate from the array
+    totalDups+=1;
+    //const value = map.get(key); //individual duplicate tracking for each user
+    //value.dupeCount+=1; 
+    //map.set(key,value);
+  }
+
+
+  }
+  //console.log(map)
+
+  //var key = `${users[0].name} ${users[0].eyeColor} ${users[0].hairColor}`
+//console.log(key)
+  //console.log(users[0])
+const returnArray = {returnUsers,totalDups}
+
+  return returnArray;//, totalDups;
+}
+//deduplicateUsers(users);
 console.log(deduplicateUsers(users));
 
 // ------------------------------------
