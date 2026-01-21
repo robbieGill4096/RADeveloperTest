@@ -27,10 +27,36 @@ import { deck, users } from './setup.js';
 // }
 
 function drawCards(deck, num){
-  return [deck, num];
-}
+  //for the number of cards drawn
+  //if (num >=0){
+    //console.log(deck.pop().suit);
+    
+    //drawCards(deck,num-1);
+  //}
 
-//console.log(drawCards(deck, 5));
+  //deck.pop()
+  const map = new Map();
+  const hand = [];
+  const remainingSuits = []
+  const remainingValues = []
+  for (let i = 0; i < num; i++) {
+
+  hand.push(deck.pop());
+  }
+  //get the values of remianing suits and values
+  for(let i=0; i < deck.length; i++){
+    console.log(deck[i]
+    
+
+
+    );
+  }
+  return [deck[0], num];
+  //return {hand,remainingSuits,remainingValues};
+
+}
+//drawCards(deck,4);
+console.log(drawCards(deck, 12));
 
 
 // Given an array of users
@@ -90,12 +116,12 @@ function deduplicateUsers(users){
   //var key = `${users[0].name} ${users[0].eyeColor} ${users[0].hairColor}`
 //console.log(key)
   //console.log(users[0])
-const returnArray = {returnUsers,totalDups}
+  const returnArray = {returnUsers,totalDups}
 
   return returnArray;//, totalDups;
 }
-//deduplicateUsers(users);
-console.log(deduplicateUsers(users));
+
+//console.log(deduplicateUsers(users));
 
 // ------------------------------------
 // ------------------------------------
